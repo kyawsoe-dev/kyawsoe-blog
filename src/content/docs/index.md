@@ -1,9 +1,10 @@
 ---
 title: 'Kyaw Soe - Developer Portfolio'
 description: 'Full-stack developer passionate about building web applications and sharing knowledge with the developer community.'
-template: 'page'
+template: 'doc'
 editUrl: false
 lastUpdated: false
+sidebar: false
 toc: false
 pagination: false
 ---
@@ -76,31 +77,158 @@ pagination: false
     <div class="container">
       <h2>Featured Projects</h2>
       <div class="projects-grid">
-        <div class="project-card">
-          <h3>Project Name</h3>
-          <p>Brief description of the project and technologies used.</p>
-          <div class="project-tags">
-            <span class="tag">React</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Node.js</span>
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card-no-image">
+            <h3 class="h5 mb-2">Realtime Chat App</h3>
+            <p class="text-muted">
+            A realtime chat application featuring instant messaging, notifications, online status, and group conversations.
+            Built using Socket.io for live communication and Prisma with PostgreSQL for data management.
+            </p>
+            <div class="mb-3">
+            <span class="badge bg-secondary text-white me-1">JavaScript</span>
+            <span class="badge bg-secondary text-white me-1">Prisma</span>
+            <span class="badge bg-secondary text-white me-1">PostgreSQL</span>
+            <span class="badge bg-secondary text-white me-1">Socket.io</span>
+            </div>
+            <div>
+            <a href="https://github.com/kyawsoe-dev/socket_client" target="_blank" class="btn btn-outline-secondary btn-sm me-2">
+                <i class="ion-social-github me-1"></i> Github
+            </a>
+            <a href="https://socket-client-w3cc.onrender.com" target="_blank" class="btn btn-outline-primary btn-sm">
+                <i class="ion-android-open me-1"></i> Live
+            </a>
+            </div>
           </div>
         </div>
-        <div class="project-card">
-          <h3>Project Name</h3>
-          <p>Brief description of the project and technologies used.</p>
-          <div class="project-tags">
-            <span class="tag">Astro</span>
-            <span class="tag">Tailwind CSS</span>
-            <span class="tag">Vercel</span>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card-no-image">
+            <h3 class="h5 mb-2">E-Commerce Platform</h3>
+            <p class="text-muted">
+            A full-featured e-commerce system supporting merchants, products, categories and payments.
+            Features include user authentication, product management, shopping cart, and order tracking. .
+            </p>
+            <div class="mb-3">
+            <span class="badge bg-secondary text-white me-1">TypeScript</span>
+            <span class="badge bg-secondary text-white me-1">React</span>
+            <span class="badge bg-secondary text-white me-1">Prisma</span>
+            <span class="badge bg-secondary text-white me-1">PostgreSQL</span>
+            </div>
+            <div>
+            <a href="#" target="_blank" class="btn btn-outline-secondary btn-sm me-2">
+                <i class="ion-social-github me-1"></i> Github
+            </a>
+            <a href="https://ecommerce-react-miwf.onrender.com" target="_blank" class="btn btn-outline-primary btn-sm">
+                <i class="ion-android-open me-1"></i> Live
+            </a>
+            </div>
           </div>
         </div>
-        <div class="project-card">
-          <h3>Project Name</h3>
-          <p>Brief description of the project and technologies used.</p>
-          <div class="project-tags">
-            <span class="tag">Next.js</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">Prisma</span>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card-no-image">
+            <h3 class="h5 mb-2">API Monitoring Dashboard</h3>
+            <p class="text-muted">
+            A full-stack API monitoring dashboard that tracks uptime, latency, and performance for all your services.
+            For intuitive monitoring and integrated with Sentry for automatic error tracking and issue monitoring.
+            </p>
+
+            <div class="mb-3">
+                <span class="badge bg-secondary text-white me-1">Typescript</span>
+                <span class="badge bg-secondary text-white me-1">React</span>
+                <span class="badge bg-secondary text-white me-1">Prisma</span>
+                <span class="badge bg-secondary text-white me-1">PostgreSQL</span>
+            </div>
+            <div>
+                <a href="#" class="btn btn-outline-secondary btn-sm me-2">
+                <i class="ion-social-github me-1"></i> Github
+                </a>
+                <a href="https://api-reliability-frontend.onrender.com" target="_blank" class="btn btn-outline-primary btn-sm">
+                <i class="ion-android-open me-1"></i> Live
+                </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card-no-image">
+            <h3 class="h5 mb-2">Multi-Database Manager CLI</h3>
+            <p class="text-muted">A CLI tool to manage multiple databases from a single interface. It supports Postgres, MySQL, and MongoDB and convenient for SQL common operations.</p>
+            <div class="mb-3">
+                <span class="badge bg-secondary text-white me-1">Typescript</span>
+                <span class="badge bg-secondary text-white me-1">npm</span>
+            </div>
+            <div>
+                <a href="https://github.com/kyawsoe-dev/db-manager-cli" target="_blank" class="btn btn-outline-secondary btn-sm me-2">
+                <i class="ion-social-github me-1"></i> Github
+                </a>
+                <a href="https://www.npmjs.com/package/multi-dbman-cli" target="_blank" class="btn btn-outline-primary btn-sm">
+                <i class="ion-android-open me-1"></i> Live
+                </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card-no-image">
+            <h3 class="h5 mb-2">NestJS Prisma Generator CLI</h3>
+            <p class="text-muted">A CLI tool to generate fully modular NestJS projects with Prisma, featuring pre-configured Swagger, authentication, AWS S3 integration, and Prisma setup.</p>
+            <div class="mb-3">
+                <span class="badge bg-secondary text-white me-1">Javscript</span>
+                <span class="badge bg-secondary text-white me-1">NestJS</span>
+                <span class="badge bg-secondary text-white me-1">npm</span>
+            </div>
+            <div>
+                <a href="https://github.com/kyawsoe-dev/nestjs-generator-cli" target="_blank" class="btn btn-outline-secondary btn-sm me-2">
+                <i class="ion-social-github me-1"></i> Github
+                </a>
+                <a href="https://www.npmjs.com/package/nestjs-prisma-cli" target="_blank" class="btn btn-outline-primary btn-sm">
+                <i class="ion-android-open me-1"></i> Live
+                </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card-no-image">
+            <h3 class="h5 mb-2">MetaClean Telegram Bot</h3>
+            <p class="text-muted">A Telegram bot that extracts and displays image metadata, detects GPS locations with Google Maps links, and provides metadata-free images.</p>
+            <div class="mb-3">
+                <span class="badge bg-secondary text-white me-1">Telegraf</span>
+                <span class="badge bg-secondary text-white me-1">EXIF</span>
+                <span class="badge bg-secondary text-white me-1">Metadata</span>
+                <span class="badge bg-secondary text-white me-1">Sharp</span>
+                <span class="badge bg-secondary text-white me-1">Typescript</span>
+            </div>
+            <div>
+                <a href="#" class="btn btn-outline-secondary btn-sm me-2">
+                <i class="ion-social-github me-1"></i> Github
+                </a>
+                <a href="https://t.me/ImageMetaCleanerBot" target="_blank" class="btn btn-outline-primary btn-sm">
+                <i class="ion-android-open me-1"></i> Live
+                </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card-no-image">
+            <h3 class="h5 mb-2">Telegram Bot</h3>
+            <p class="text-muted">A Telegram bot that can download, convert, cut, and merge YouTube videos into MP3, as well as provide AI chat and OCR features.</p>
+            <div class="mb-3">
+                <span class="badge bg-secondary text-white me-1">Telegraf</span>
+                <span class="badge bg-secondary text-white me-1">FFMPEG</span>
+                <span class="badge bg-secondary text-white me-1">Glob</span>
+                <span class="badge bg-secondary text-white me-1">Typescript</span>
+            </div>
+            <div>
+                <a href="https://github.com/kyawsoe-dev/nestjs-generator-cli" target="_blank" class="btn btn-outline-secondary btn-sm me-2">
+                <i class="ion-social-github me-1"></i> Github
+                </a>
+                <a href="https://t.me/video2mp3_converter_192_bot" target="_blank" class="btn btn-outline-primary btn-sm">
+                <i class="ion-android-open me-1"></i> Live
+                </a>
+            </div>
           </div>
         </div>
       </div>
@@ -113,28 +241,25 @@ pagination: false
       <h2>Latest Blog Posts</h2>
       <div class="blog-grid">
         <div class="blog-card">
-          <h3>Article Title</h3>
+          <h3>NestJS Getting Started</h3>
           <p>
-            Short description of the article content and what readers will
-            learn.
+            Learn how to build scalable server-side applications with NestJS, a progressive Node.js framework for building efficient and scalable applications.
           </p>
-          <a href="/blog/article-url">Read More</a>
+          <a href="/blog/nestjs-getting-started/">Read More</a>
         </div>
         <div class="blog-card">
-          <h3>Article Title</h3>
+          <h3>JavaScript Async/Await</h3>
           <p>
-            Short description of the article content and what readers will
-            learn.
+            Master asynchronous programming in JavaScript with async/await syntax and promises. Learn best practices and common patterns.
           </p>
-          <a href="/blog/article-url">Read More</a>
+          <a href="/blog/js-async-await/">Read More</a>
         </div>
         <div class="blog-card">
-          <h3>Article Title</h3>
+          <h3>Database Integration with Node.js</h3>
           <p>
-            Short description of the article content and what readers will
-            learn.
+            Learn how to integrate databases with Node.js applications using popular ORMs and database drivers.
           </p>
-          <a href="/blog/article-url">Read More</a>
+          <a href="/blog/nodejs-express-database-integration/">Read More</a>
         </div>
       </div>
       <div class="view-all">
@@ -560,6 +685,77 @@ pagination: false
     color: white;
     transform: translateY(-2px);
   }
+
+  /* New project card styles */
+  .project-card-no-image {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+  .project-card-no-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px var(--shadow);
+  }
+
+  .project-card-no-image h3 {
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-card-no-image .text-muted {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-card-no-image .badge {
+    background: var(--secondary) !important;
+    color: var(--primary);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .btn-outline-secondary, .btn-outline-primary {
+    border-width: 2px;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-outline-secondary {
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  .btn-outline-secondary:hover {
+    background-color: var(--border);
+    border-color: var(--border);
+  }
+
+  .btn-outline-primary {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .btn-outline-primary:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+  }
+
+  .mb-1 { margin-bottom: 0.25rem !important; }
+  .mb-2 { margin-bottom: 0.5rem !important; }
+  .mb-3 { margin-bottom: 1rem !important; }
+  .me-1 { margin-right: 0.25rem !important; }
+  .me-2 { margin-right: 0.5rem !important; }
+  .h5 { font-size: 1.25rem; font-weight: 600; }
 
   /* Blog Section */
   .blog-section {
