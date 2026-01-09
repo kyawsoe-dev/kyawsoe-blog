@@ -15,7 +15,7 @@ pagination: false
       <div class="hero-content">
         <div class="hero-text">
           <h1>Hi, I'm <span class="highlight">Kyaw Soe</span></h1>
-          <h2><span class="typed-text">Full-Stack Developer</span></h2>
+          <h2>A <span class="typed-text">Full-Stack Developer</span></h2>
           <p>
             I build modern web applications with JavaScript, TypeScript, and
             cutting-edge frameworks.
@@ -1077,7 +1077,7 @@ pagination: false
     .hero-section {
       padding: 2rem 0;
     }
-    
+
     .btn {
       width: 100%;
       max-width: 300px;
