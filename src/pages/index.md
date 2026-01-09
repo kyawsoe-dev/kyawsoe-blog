@@ -373,18 +373,15 @@ pagination: false
     max-width: 90%;
   }
 
-  .hero-buttons {
+ .hero-buttons {
     display: flex;
-    gap: 1.25rem; 
+    gap: 1rem;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 0; 
   }
-  
+
   .hero-buttons .btn {
-    flex: 1 1 auto;
-    min-width: 140px;
-    max-width: 240px;
+    width: auto;
+    max-width: none;
   }
 
   .btn {
@@ -956,6 +953,7 @@ pagination: false
     .btn {
       width: 100%;
       max-width: 300px;
+      padding: 0.9rem 0rem;
     }
   }
 
@@ -1017,6 +1015,19 @@ pagination: false
   }
 
   @media (max-width: 480px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero-text {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 0.5rem;
+    }
+
     .hero-text h1 {
       font-size: 2rem;
     }
@@ -1025,18 +1036,41 @@ pagination: false
       font-size: 1.3rem;
     }
 
-    .hero-buttons {
-      gap: 0.75rem;
+    .hero-text p {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
     }
 
-    .btn {
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 0 1rem; /* button side padding */
+      box-sizing: border-box;
+    }
+
+    .hero-buttons .btn {
       width: 100%;
       max-width: 100%;
-      padding: 0.8rem 1.5rem;
+    }
+
+    .hero-image {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      max-width: 260px;
+      width: 100%;
     }
 
     .hero-section {
       padding: 2rem 0;
     }
   }
+
 </style>

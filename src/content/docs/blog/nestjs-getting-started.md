@@ -8,6 +8,7 @@ category: 'Backend Development'
 technology: 'NestJS'
 level: 'beginner'
 readingTime: 8
+layout: '../../layouts/NestJSBlogSeriesLayout.astro'
 ---
 
 <div class="blog-meta-enhanced">
@@ -33,28 +34,59 @@ NestJS provides:
 
 ## Installation
 
+First, make sure you have Node.js installed on your system. Then install the NestJS CLI globally:
+
 ```bash
 npm install -g @nestjs/cli
+```
+
+Create a new NestJS project:
+
+```bash
 nest new my-nestjs-app
 cd my-nestjs-app
 ```
 
+The CLI will create a new project with the basic structure and install all necessary dependencies.
+
 ## Project Structure
 
+When you create a new NestJS project, you'll see the following structure:
+
 ```
-src/
-├── app.module.ts
-├── app.controller.ts
-├── app.service.ts
-├── main.ts
-└── ...
+my-nestjs-app/
+├── src/
+│   ├── app.module.ts
+│   ├── app.controller.ts
+│   ├── app.service.ts
+│   └── main.ts
+├── test/
+├── node_modules/
+├── package.json
+├── nest-cli.json
+└── tsconfig.json
 ```
+
+- `main.ts`: The entry point of your application
+- `app.module.ts`: The root module of your application
+- `app.controller.ts`: A basic controller with a route
+- `app.service.ts`: A basic service with business logic
+
+## Running the Application
+
+To start your application in development mode:
+
+```bash
+npm run start:dev
+```
+
+Your application will be available at `http://localhost:3000`.
 
 ## Core Concepts
 
 ### 1. Modules
 
-Modules organize your application into distinct feature sets:
+Modules are classes annotated with `@Module()`. They provide metadata that helps Nest organize the application structure.
 
 ```typescript
 // app.module.ts
@@ -72,7 +104,7 @@ export class AppModule {}
 
 ### 2. Controllers
 
-Controllers handle incoming requests and return responses:
+Controllers handle incoming requests and return responses to the client.
 
 ```typescript
 // app.controller.ts
@@ -92,7 +124,7 @@ export class AppController {
 
 ### 3. Services (Providers)
 
-Services contain business logic:
+Services contain the business logic of your application and can be injected into controllers.
 
 ```typescript
 // app.service.ts
@@ -106,11 +138,11 @@ export class AppService {
 }
 ```
 
-## Building a REST API
+## Creating Your First Feature
 
-Let's create a more complex example with a user API:
+Let's create a simple user feature to understand how different parts work together:
 
-### 1. Create User Module
+### 1. Generate a User Module
 
 ```bash
 nest generate module user
@@ -118,10 +150,10 @@ nest generate service user
 nest generate controller user
 ```
 
-### 2. Define User Entity
+### 2. Define a User Interface
 
 ```typescript
-// user.entity.ts
+// user/interfaces/user.interface.ts
 export interface User {
   id: number;
   name: string;
@@ -129,16 +161,16 @@ export interface User {
 }
 ```
 
-### 3. User Service
+### 3. Update the User Service
 
 ```typescript
-// user.service.ts
+// user/user.service.ts
 import { Injectable } from '@nestjs/common';
-import { User } from './user.entity';
+import { User } from './interfaces/user.interface';
 
 @Injectable()
 export class UserService {
-  private users: User[] = [
+  private readonly users: User[] = [
     { id: 1, name: 'John Doe', email: 'john@example.com' },
     { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
   ];
@@ -150,93 +182,36 @@ export class UserService {
   findOne(id: number): User {
     return this.users.find(user => user.id === id);
   }
-
-  create(user: Omit<User, 'id'>): User {
-    const newUser = { ...user, id: this.users.length + 1 };
-    this.users.push(newUser);
-    return newUser;
-  }
-
-  update(id: number, updateUser: Partial<User>): User {
-    const userIndex = this.users.findIndex(user => user.id === id);
-    if (userIndex === -1) {
-      return null;
-    }
-    
-    this.users[userIndex] = { ...this.users[userIndex], ...updateUser };
-    return this.users[userIndex];
-  }
-
-  remove(id: number): boolean {
-    const userIndex = this.users.findIndex(user => user.id === id);
-    if (userIndex === -1) {
-      return false;
-    }
-    
-    this.users.splice(userIndex, 1);
-    return true;
-  }
 }
 ```
 
-### 4. User Controller
+### 4. Update the User Controller
 
 ```typescript
-// user.controller.ts
-import {
-  Controller,
-  Get,
-  Post,
-  Put,
-  Delete,
-  Body,
-  Param,
-  HttpCode,
-  HttpStatus,
-} from '@nestjs/common';
+// user/user.controller.ts
+import { Controller, Get, Param } from '@nestjs/common';
 import { UserService } from './user.service';
-import { User } from './user.entity';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  findAll(): User[] {
+  findAll() {
     return this.userService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): User {
+  findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
-  }
-
-  @Post()
-  @HttpCode(HttpStatus.CREATED)
-  create(@Body() createUserDto: Omit<User, 'id'>): User {
-    return this.userService.create(createUserDto);
-  }
-
-  @Put(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateUserDto: Partial<User>,
-  ): User {
-    return this.userService.update(+id, updateUserDto);
-  }
-
-  @Delete(':id')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: string): void {
-    this.userService.remove(+id);
   }
 }
 ```
 
-### 5. Update User Module
+### 5. Register the Service in the Module
 
 ```typescript
-// user.module.ts
+// user/user.module.ts
 import { Module } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserController } from './user.controller';
@@ -248,7 +223,7 @@ import { UserController } from './user.controller';
 export class UserModule {}
 ```
 
-### 6. Import Module in App Module
+### 6. Import the User Module
 
 ```typescript
 // app.module.ts
@@ -265,107 +240,84 @@ import { UserModule } from './user/user.module';
 export class AppModule {}
 ```
 
+Now you can access your API at:
+- `GET http://localhost:3000/users` - Get all users
+- `GET http://localhost:3000/users/1` - Get user with ID 1
+
 ## Dependency Injection
 
-NestJS has a powerful dependency injection system:
+NestJS has a powerful dependency injection system. You can inject services into other services or controllers by specifying them in the constructor:
 
 ```typescript
-// logger.service.ts
+// user/user.service.ts
 import { Injectable } from '@nestjs/common';
-
-@Injectable()
-export class LoggerService {
-  log(message: string) {
-    console.log(`[LOG] ${message}`);
-  }
-  
-  error(message: string) {
-    console.error(`[ERROR] ${message}`);
-  }
-}
-
-// user.service.ts (updated)
-import { Injectable, Logger } from '@nestjs/common';
-import { LoggerService } from './logger.service';
+import { LoggerService } from '../logger/logger.service'; // hypothetical logger service
 
 @Injectable()
 export class UserService {
   constructor(private logger: LoggerService) {}
 
-  create(user: any) {
-    this.logger.log(`Creating user: ${user.name}`);
+  findAll() {
+    this.logger.log('Fetching all users');
     // ... implementation
   }
 }
 ```
 
-## Exception Handling
+## Environment Variables
 
-NestJS provides built-in exception filters:
-
-```typescript
-// user.controller.ts (updated)
-import {
-  // ... existing imports
-  NotFoundException,
-  BadRequestException,
-} from '@nestjs/common';
-
-@Get(':id')
-findOne(@Param('id') id: string): User {
-  const user = this.userService.findOne(+id);
-  if (!user) {
-    throw new NotFoundException(`User with ID ${id} not found`);
-  }
-  return user;
-}
-
-@Post()
-@HttpCode(HttpStatus.CREATED)
-create(@Body() createUserDto: Omit<User, 'id'>): User {
-  if (!createUserDto.name || !createUserDto.email) {
-    throw new BadRequestException('Name and email are required');
-  }
-  return this.userService.create(createUserDto);
-}
-```
-
-## Validation
-
-Install class-validator for request validation:
+For configuration, NestJS supports environment variables through the ConfigModule:
 
 ```bash
-npm install class-validator class-transformer
-npm install -D @types/express
+npm install @nestjs/config
 ```
 
 ```typescript
-// create-user.dto.ts
-import { IsEmail, IsString, MinLength } from 'class-validator';
+// app.module.ts
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 
-export class CreateUserDto {
-  @IsString()
-  @MinLength(2)
-  name: string;
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+  ],
+})
+export class AppModule {}
+```
 
-  @IsEmail()
-  email: string;
-}
+You can then use environment variables in your services:
 
-// user.controller.ts (updated)
-@Post()
-@HttpCode(HttpStatus.CREATED)
-create(@Body() createUserDto: CreateUserDto): User {
-  return this.userService.create(createUserDto);
+```typescript
+// app.service.ts
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+
+@Injectable()
+export class AppService {
+  constructor(private configService: ConfigService) {}
+
+  getDatabaseHost(): string {
+    return this.configService.get<string>('DATABASE_HOST');
+  }
 }
 ```
 
 ## Testing
 
-NestJS has excellent testing support:
+NestJS has excellent testing support built-in. You can run tests with:
+
+```bash
+npm run test
+npm run test:watch  # for watch mode
+npm run test:cov    # for coverage report
+```
+
+Create a simple test for your service:
 
 ```typescript
-// user.service.spec.ts
+// user/user.service.spec.ts
 import { Test } from '@nestjs/testing';
 import { UserService } from './user.service';
 
@@ -377,22 +329,23 @@ describe('UserService', () => {
       providers: [UserService],
     }).compile();
 
-    service = module.get(UserService);
+    service = module.get<UserService>(UserService);
   });
 
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
-
-  it('should create a user', () => {
-    const result = service.create({ name: 'Test User', email: 'test@example.com' });
-    expect(result).toEqual({
-      id: expect.any(Number),
-      name: 'Test User',
-      email: 'test@example.com',
-    });
-  });
 });
 ```
+
+## Next Steps
+
+Now that you have a basic understanding of NestJS, you can explore:
+- Database integration with TypeORM or Mongoose
+- Authentication and authorization
+- Validation with class-validator
+- Exception handling
+- Middleware and guards
+- Microservices architecture
 
 NestJS provides a solid foundation for building scalable and maintainable backend applications with TypeScript.
