@@ -1020,6 +1020,18 @@ pagination: false
     }
   }
 
+  @media (max-width: 576px) {
+    .view-all {
+      padding: 0 0.75rem;
+    }
+
+    .view-all .btn {
+      width: 100%;
+      max-width: none;
+      text-align: center;
+    }
+  }
+
   @media (max-width: 480px) {
     .hero-content {
       grid-template-columns: 1fr;
